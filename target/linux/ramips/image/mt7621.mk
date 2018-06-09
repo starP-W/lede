@@ -83,13 +83,13 @@ define Device/firewrt
 endef
 TARGET_DEVICES += firewrt
 
-define Device/gb-pc1
+define Device/gnubee_gb-pc1
   DTS := GB-PC1
   DEVICE_TITLE := GnuBee Personal Cloud One
   DEVICE_PACKAGES := kmod-ata-core kmod-ata-ahci kmod-usb3 kmod-sdhci-mt7620
   IMAGE_SIZE := $(ralink_default_fw_size_32M)
 endef
-TARGET_DEVICES += gb-pc1
+TARGET_DEVICES += gnubee_gb-pc1
 
 define Device/gnubee_gb-pc2
   DTS := GB-PC2
@@ -310,15 +310,26 @@ define Device/wf-2881
 endef
 TARGET_DEVICES += wf-2881
 
-define Device/witi
-  DTS := WITI
+define Device/mqmaker_witi-256m
+  DTS := WITI-256M
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
-  DEVICE_TITLE := MQmaker WiTi
+  DEVICE_TITLE := MQmaker WiTi (256MB RAM)
+  DEVICE_PACKAGES := \
+	kmod-ata-core kmod-ata-ahci kmod-mt76x2 kmod-sdhci-mt7620 kmod-usb3 \
+	kmod-usb-ledtrig-usbport wpad-mini
+  SUPPORTED_DEVICES += witi
+endef
+TARGET_DEVICES += mqmaker_witi-256m
+
+define Device/mqmaker_witi-512m
+  DTS := WITI-512M
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := MQmaker WiTi (512MB RAM)
   DEVICE_PACKAGES := \
 	kmod-ata-core kmod-ata-ahci kmod-mt76x2 kmod-sdhci-mt7620 kmod-usb3 \
 	kmod-usb-ledtrig-usbport wpad-mini
 endef
-TARGET_DEVICES += witi
+TARGET_DEVICES += mqmaker_witi-512m
 
 define Device/wndr3700v5
   DTS := WNDR3700V5

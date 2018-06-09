@@ -325,6 +325,14 @@ platform_check_image() {
 
 		return 0
 		;;
+	k2t)
+		[ "$magic_long" != "27051956" ] && {
+			echo "Invalid image type."
+			return 1
+		}
+
+		return 0
+		;;
 	alfa-ap96|\
 	alfa-nx|\
 	ap121|\
@@ -483,6 +491,7 @@ platform_check_image() {
 	tl-wr941nd|\
 	tl-wr941nd-v5|\
 	tl-wr941nd-v6|\
+	tl-wr941n-v7|\
 	wifi-pineapple-nano)
 		local magic_ver="0100"
 
